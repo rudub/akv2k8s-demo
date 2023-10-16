@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akv-demo
+  namespace: akv-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: akv-demo
+  template: 
+    metadata:
+      labels:
+        app: akv-demo
+    spec:
+      containers:
+        - name: akv-demo
+          image: ruchi183/akv-demo
+          ports:
+          - containerPort: 80 
+          envFrom:
+          - secretRef:
+              name: akv-demo-secret
