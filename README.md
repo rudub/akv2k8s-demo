@@ -2,9 +2,11 @@
 This demo created with minikube and integrating azure key vault with external K8s which is minukube. 
 
 1. Create akv2k8s namespace
-2. Create azure service principal to access key vault
+2. Create azure service principal to access key vault 
+
    `az ad sp create-for-rbac --name "akv2k8s-minikube"`
 3. Deploy akv2k8s Helm chart in k8s in akv2k8s namespace 
+
    `helm upgrade --install akv2k8s spv-charts/akv2k8s \
     --namespace akv2k8s \
     --set global.keyVaultAuth=environment \
